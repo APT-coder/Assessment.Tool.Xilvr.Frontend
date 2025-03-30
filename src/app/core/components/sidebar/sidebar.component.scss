@@ -1,0 +1,253 @@
+@import 'src/styles.scss';
+
+// Sidebar styles
+.sidebar {
+  width: 80px;
+  height: 95vh;
+  background-color: var(--secondary-color);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  margin: 2.5vh 2vh;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+  width: 50px;
+  height: auto;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 40px;
+  align-self: stretch;
+}
+
+.menu-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.menu-item i {
+  font-size: 24px;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.menu-item:hover i {
+  color: var(--default-theme);
+}
+
+.menu-item .hover-line {
+  position: absolute;
+  left: 15px;
+  height: 50%;
+  width: 4px;
+  background: var(--default-theme);
+  transform: scaleY(0);
+  transition: transform 0.3s ease-in-out;
+  transform-origin: center;
+}
+
+.menu-item:hover .hover-line {
+  transform: scaleY(1);
+}
+
+.profile {
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+.profile i {
+  font-size: 28px;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.profile i:hover {
+  color: var(--default-theme) !important;
+}
+
+// Overlay
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-top: 5px solid #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// Profile Menu Modal
+.profile-menu {
+  position: absolute;
+  top: 2.5vh;
+  left: 130px;
+  width: 200px;
+  height: 95vh;
+  background-color: var(--secondary-color);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile-menu.open {
+  animation: slideInFromLeft 0.3s ease-in-out forwards;
+}
+
+.profile-menu.close {
+  animation: slideOutToLeft 0.3s ease-in-out forwards;
+}
+
+.profile-menu p {
+  color: var(--text-color);
+  cursor: pointer;
+  margin: 10px 0;
+  transition: color 0.3s;
+}
+
+.profile-menu p:hover {
+  color: var(--default-theme);
+}
+
+.close-btn {
+  position: absolute;
+  left: -25px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 25px;
+  height: 50px;
+  background-color: grey;
+  border-radius: 10px 0 0 10px;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.close-btn:hover {
+  background-color: var(--default-theme);
+}
+
+// Slide-in from the left
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-120px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+// Slide-out to the left
+@keyframes slideOutToLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-120px);
+    opacity: 0;
+  }
+}
+
+.profile-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.theme-icon {
+  font-size: 22px;
+  cursor: pointer;
+  color: grey;
+}
+
+.theme-icon:hover {
+  color: var(--default-theme);
+}
+
+// Profile User Section
+.profile-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding-left: 10px;
+  position: relative;
+}
+
+// Circular Avatar Placeholder
+.avatar-placeholder {
+  width: 50px;
+  height: 50px;
+  background-color: grey;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+// Username Placeholder
+.username {
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+// Edit Icon (Positioned Below Username)
+.edit-icon {
+  position: absolute;
+  bottom: -5px;
+  right: 10px;
+  font-size: 14px;
+  color: grey;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.edit-icon:hover {
+  color: var(--default-theme);
+}
