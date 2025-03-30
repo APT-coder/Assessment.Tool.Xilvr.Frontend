@@ -1,0 +1,38 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-grow: 1;
+}
+
+.app-l-wrapper {
+  padding: 2.4rem;
+  width: 100%;
+  flex: 1 1 1px;
+}
+
+.app-l-sidebar {
+  background-color: var(--primary-color);
+  position: fixed;
+  width: 9.6rem;
+  height: calc(100vh - 4.8rem);
+  overflow-y: auto;
+  user-select: none;
+  top: 2.4rem;
+  left: 2.4rem;
+}
+
+.app-l-main-container {
+  margin-left: 11.8rem;
+  background-color: white;
+}
+
+.layout-main {
+  flex: 1 1 auto;
+}
+
+.app-l-page-content {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ThemeService } from './core/services/theme.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -11,20 +12,20 @@ import { ThemeService } from './core/services/theme.service';
 export class AppComponent {
   title = 'xilvr-app';
 
-  constructor(private themeService: ThemeService){}
+  isDarkMode = false;
+  isLoading = false;
 
-  private get isDarkMode(): boolean {
-    return this.themeService.isDarkMode$.value;
+  constructor(private themeService: ThemeService) {
+    this.themeService.isDarkMode$.subscribe((isDark) => {
+      this.isDarkMode = isDark;
+    });
   }
 
   toggleTheme() {
-    const newThemeValue = !this.isDarkMode;
-    this.themeService.isDarkMode$.next(newThemeValue);
-
-    const themeLink = document.getElementById('theme-link') as HTMLLinkElement;
-    document.body.classList.toggle('dark-theme', newThemeValue);
-    themeLink.href = newThemeValue
-      ? 'assets/themes/ng-zorro-antd.dark.css'
-      : 'assets/themes/ng-zorro-antd.css';
+    this.isLoading = true;
+    setTimeout(() => {
+      this.themeService.toggleTheme(!this.isDarkMode);
+      this.isLoading = false;
+    }, 2000);
   }
 }

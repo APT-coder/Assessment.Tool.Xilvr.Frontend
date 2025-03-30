@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #f1f3f6;
+  --secondary-color: #ffffff;
+  --text-color: #000000;
+
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-theme {
+  --primary-color: #2a2a2a;
+  --secondary-color: #1e1e1e;
+  --text-color: #ffffff;
+}
