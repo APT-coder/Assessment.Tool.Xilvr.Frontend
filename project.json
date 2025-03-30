@@ -21,6 +21,11 @@
           {
             "glob": "**/*",
             "input": "public"
+          },
+          {
+            "glob": "**/*.css",
+            "input": "src/themes",
+            "output": "assets/themes"
           }
         ],
         "styles": ["./src/styles.scss"],
