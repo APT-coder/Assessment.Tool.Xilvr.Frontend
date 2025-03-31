@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../services/theme.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,13 +12,20 @@ import { ThemeService } from '../../services/theme.service';
 export class SidebarComponent {
   menuItems = [
     {
-      icon: 'fa-solid fa-house'
+      icon: 'fa-solid fa-house',
+      name: 'Dashboard'
     },
     {
-      icon: 'fa-solid fa-file-lines'
+      icon: 'fa-solid fa-file-lines',
+      name: 'Assessments'
     },
     {
-      icon: 'fa-solid fa-user-tag'
+      icon: 'fa-solid fa-user-tag',
+      name: 'User Listing'
+    },
+    {
+      icon: 'fa-solid fa-users',
+      name: 'Manage Roles'
     }
   ]
 
@@ -26,8 +34,9 @@ export class SidebarComponent {
   isProfileMenuOpen = false;
   isAnimating = false;
   themeIcon!: string;
+  hoveredItem!: string | undefined;
 
-  constructor(private themeService: ThemeService) {
+  constructor(private themeService: ThemeService, private router: Router) {
     this.themeService.isDarkMode$.subscribe((isDark) => {
       this.isDarkMode = isDark;
       this.themeIcon = isDark ? "fa-solid fa-sun" : "fa-solid fa-moon"
@@ -53,5 +62,9 @@ export class SidebarComponent {
       this.isProfileMenuOpen = false;
       this.isAnimating = false;
     }, 300);
+  }
+
+  logout(){
+    this.router.navigate(['/login']);
   }
 }

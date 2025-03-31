@@ -4,9 +4,10 @@
       <img src="logo.png" alt="Logo" />
     </div>
     <div class="menu">
-      <div class="menu-item" *ngFor="let item of menuItems">
+      <div class="menu-item" *ngFor="let item of menuItems" (mouseenter)="hoveredItem = item.name" (mouseleave)="hoveredItem = ''">
         <i [class]="item.icon" style="color: grey;"></i>
         <div class="hover-line"></div>
+        <span class="menu-tooltip" *ngIf="hoveredItem === item.name">{{ item.name }}</span>
       </div>
     </div>
     <div class="profile">
@@ -20,16 +21,27 @@
 
     <!-- Header: Logout & Theme Icon -->
     <div class="profile-header">
-        <i class="fa-solid fa-right-from-bracket theme-icon"></i>
+        <i class="fa-solid fa-right-from-bracket theme-icon" (click)="logout()"></i>
         <i [class]="themeIcon" class="theme-icon" (click)="toggleTheme()"></i>
     </div>
 
      <!-- User Avatar & Name -->
-     <div class="profile-user">
-        <div class="avatar-placeholder">U</div>
-        <p class="username">Username</p>
-        <i class="fa-solid fa-user-pen edit-icon"></i>
+    <div class="profile-user">
+        <div class="avatar-placeholder">U
+          <i class="fa-solid fa-pen edit-icon"></i></div>
+        <div class="username-desg">
+          <p class="username">Aswin P T</p>
+          <p class="desg">Software Engineer</p>
+        </div>
     </div>
+
+    <!-- User Details Section -->
+    <div class="user-details">
+      <p><strong>Email:</strong> aswin&#64;example.com</p>
+      <p><strong>Phone:</strong> +91 98765 43210</p>
+      <p><strong>Batch:</strong> 2020</p>
+      <p><strong>Joined On:</strong> 15th March 2021</p>
+  </div>
 </div>
 
 <div class="overlay" *ngIf="isLoading">
