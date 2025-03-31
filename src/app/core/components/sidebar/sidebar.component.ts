@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../services/theme.service';
 import { Router } from '@angular/router';
+import { UserDetails } from '../../models/user-details.model';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,6 +11,8 @@ import { Router } from '@angular/router';
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent {
+  @Input() userDetails!: UserDetails;
+  
   menuItems = [
     {
       icon: 'fa-solid fa-house',

@@ -27,21 +27,27 @@
 
      <!-- User Avatar & Name -->
     <div class="profile-user">
-        <div class="avatar-placeholder">U
+        <div class="avatar-placeholder">
+          <img [src]="userDetails.profileImageUrl" alt="profilePicture">
           <i class="fa-solid fa-pen edit-icon"></i></div>
         <div class="username-desg">
-          <p class="username">Aswin P T</p>
-          <p class="desg">Software Engineer</p>
+          <p class="username">{{ userDetails.firstName }} {{ userDetails.lastName }}</p>
+          <p class="desg">{{ userDetails.designation }}</p>
+          <p class="batch">{{ userDetails.batch[0] }}</p>
         </div>
     </div>
 
     <!-- User Details Section -->
     <div class="user-details">
-      <p><strong>Email:</strong> aswin&#64;example.com</p>
-      <p><strong>Phone:</strong> +91 98765 43210</p>
-      <p><strong>Batch:</strong> 2020</p>
-      <p><strong>Joined On:</strong> 15th March 2021</p>
-  </div>
+      <p class="info-line">
+        <span>{{ userDetails.email }}</span>
+        <span class="separator">|</span>
+        <span>{{ userDetails.phoneNumber }}</span>
+      </p>
+      
+    </div>
+    
+    
 </div>
 
 <div class="overlay" *ngIf="isLoading">

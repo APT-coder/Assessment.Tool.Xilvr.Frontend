@@ -1,6 +1,6 @@
 <div class="app-l-wrapper">
     <div class="app-l-sidebar">
-      <app-sidebar />
+      <app-sidebar [userDetails]="userDetails"/>
     </div>
     <div class="app-l-main-container" *ngIf="!loading">
       <div class="app-l-page-content">
